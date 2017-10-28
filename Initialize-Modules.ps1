@@ -1,0 +1,1 @@
+Get-ChildItem $PSScriptRoot\modules\*.psm1 | Import-Module
