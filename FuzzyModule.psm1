@@ -9,6 +9,8 @@ The current implementation returns the length of the longest subsequence of lett
 Get-FuzzyScore cat cart # returns 3
 .EXAMPLE
 Get-FuzzyScore cat dog # returns 0
+.EXAMPLE
+ls | Select {Get-FuzzyScore dog $_}
 #>
 Function Get-FuzzyScore
 {
@@ -70,6 +72,8 @@ Calls Get-FuzzyScore on all objects and returns the objects sorted in the order 
 ls | Get-BestFuzzyMatch filenme -First 10
 .EXAMPLE
 ls | Get-BestFuzzyMath filenma
+.EXAMPLE
+ls | Get-BestFuzzyMath filenma -Member Name
 #>
 Function Get-BestFuzzyMatch
 {

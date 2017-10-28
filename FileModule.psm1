@@ -24,6 +24,6 @@ Set-Alias ffc Find-FilesContaining
 
 Function Show-FilesRecursive
 {
-    Get-ChildItem -r -i *.* | Select FullName
+    Get-ChildItem -r -i *.* | Select-Object FullName
 }
 Set-Alias ef Show-FilesRecursive
