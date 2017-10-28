@@ -1,0 +1,1 @@
+Add `. \path\to\Aglets\Initialize-Modules.ps1` to PowerShell profile
