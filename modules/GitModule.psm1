@@ -9,6 +9,7 @@ Function Add-GitInitFiles
 {
     Copy-Item $PSScriptRoot\..\assets\.gitignore .
     Copy-Item $PSScriptRoot\..\assets\.gitattributes .
+    Copy-Item $PSScriptRoot\..\assets\mit-license.txt .\LICENSE
 }
 Set-Alias getgitfiles Add-GitInitFiles
 
