@@ -33,7 +33,7 @@ Function Convert-IntToHex
     )
     Process
     {
-        return "0x{0:X}" -f $Value;
+        return "0x{0:X}" -f $Value
     }
 }
 Set-Alias hex Convert-IntToHex

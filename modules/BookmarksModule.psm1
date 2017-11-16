@@ -4,14 +4,14 @@ param(
     [Parameter(Mandatory=$true)]
     [string]$Page
 )
-    $expandedPage = $ExecutionContext.InvokeCommand.ExpandString($Page);
+    $expandedPage = $ExecutionContext.InvokeCommand.ExpandString($Page)
     if (Test-Path -PathType Container $expandedPage)
     {
-        cd $expandedPage;
+        cd $expandedPage
     }
     else
     {
-        start $expandedPage;
+        start $expandedPage
     }
 }
 
@@ -26,20 +26,20 @@ param(
     [string]$Alias
 )
     # Quit early if the file doesn't exist
-    $validFiles = $Filenames | Where-Object { Test-Path $_ };
+    $validFiles = $Filenames | Where-Object { Test-Path $_ }
     if ($validFiles.Count -eq 0)
     {
-        return;
+        return
     }
 
     # Split each line on the delimiter and create the alias
     $validFiles | Get-ChildItem | Get-Content |
         ForEach-Object {
-            $splitLine = $_.Split("|");
+            $splitLine = $_.Split("|")
             if ( $splitLine -ne $null -and $splitLine.Length -ge 2 -and $splitLine[0].Trim() -eq $Alias)
             {
-                Open-Bookmark $splitLine[1].Trim();
-                return;
+                Open-Bookmark $splitLine[1].Trim()
+                return
             }
-        };
+        }
 }

@@ -24,21 +24,21 @@ Function Get-FuzzyScore
     
     Begin
     {
-        $str1 = $FuzzyName.ToLower();
+        $str1 = $FuzzyName.ToLower()
     }
 
     Process
     {
-        $str2 = $Name.ToLower();
+        $str2 = $Name.ToLower()
 
         # Degenerate cases
         if (($str1.Length -eq 0) -or ($str2.Length -eq 0))
         {
-            return 0;
+            return 0
         }
         
-        $arr1 = @(0) * $str2.Length + 0;
-        $arr2 = @(0) * $str2.Length + 0;
+        $arr1 = @(0) * $str2.Length + 0
+        $arr2 = @(0) * $str2.Length + 0
 
         for ($i = 1; $i -le $str1.Length; $i++)
         {
@@ -46,17 +46,17 @@ Function Get-FuzzyScore
             {
                 if ($str1[$i-1] -eq $str2[$j-1])
                 {
-                    $arr2[$j] = $arr1[$j-1] + 1;
+                    $arr2[$j] = $arr1[$j-1] + 1
                 }
                 else
                 {
-                    $arr2[$j] = [math]::Max($arr1[$j], $arr2[$j-1]);
+                    $arr2[$j] = [math]::Max($arr1[$j], $arr2[$j-1])
                 }
             }
-            $arr1 = $arr2.Clone();
+            $arr1 = $arr2.Clone()
         }
 
-        return $arr2[-1];
+        return $arr2[-1]
     }
 }
 Set-Alias fscore Get-FuzzyScore
@@ -107,6 +107,6 @@ Function Get-BestFuzzyMatch
                                     {
                                          ($_."$Member").Length
                                     }}; Ascending=$true} |
-                    Select-Object -First $First;
+                    Select-Object -First $First
 }
 Set-Alias fuzz Get-BestFuzzyMatch
