@@ -1,0 +1,15 @@
+# Meta
+ag        | $PSScriptRoot\..
+aglets    | $PSScriptRoot\..
+
+# Directories
+b         | $Global:DefaultBookmarksFile
+home      | $home\
+docs      | $home\Documents\
+downloads | $home\Downloads\
+
+# Files
+att       | .\.gitattributes
+ignore    | .\.gitignore
+config    | $home\.gitconfig
+pro       | $profile
