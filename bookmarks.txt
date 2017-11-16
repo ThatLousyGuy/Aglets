@@ -1,6 +1,7 @@
 # Meta
 ag        | $PSScriptRoot\..
 aglets    | $PSScriptRoot\..
+aghub     | https://github.com/ThatLousyGuy/Aglets
 
 # Directories
 b         | $Global:DefaultBookmarksFile
