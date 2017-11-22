@@ -9,6 +9,19 @@ Function Open-BookmarkFromGlobalFiles
 }
 Set-Alias b Open-BookmarkFromGlobalFiles
 
+Function Find-BookmarksFromGlobalFiles
+{
+    param([string]$Alias)
+    Write-Host
+    Write-Host
+    Write-Host "    Closest alias matches to '$Alias'"
+    Write-Host
+    Write-Host
+
+    Get-FuzzyBookmarksFromFiles $Global:BookmarksFiles $Alias
+}
+Set-Alias fb Find-BookmarksFromGlobalFiles
+
 Function Get-ParentDirectory
 {
     param([string]$Path)

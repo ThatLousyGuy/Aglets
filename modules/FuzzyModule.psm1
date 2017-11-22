@@ -71,9 +71,9 @@ Calls Get-FuzzyScore on all objects and returns the objects sorted in the order 
 .EXAMPLE
 ls | Get-BestFuzzyMatch filenme -First 10
 .EXAMPLE
-ls | Get-BestFuzzyMath filenma
+ls | Get-BestFuzzyMatch filenma
 .EXAMPLE
-ls | Get-BestFuzzyMath filenma -Member Name
+ls | Get-BestFuzzyMatch filenma -Member Name
 #>
 Function Get-BestFuzzyMatch
 {

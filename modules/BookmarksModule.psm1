@@ -1,3 +1,5 @@
+Import-Module $PSScriptRoot\FuzzyModule.psm1
+
 Function Open-Bookmark
 {
 param(
@@ -42,4 +44,34 @@ param(
                 return
             }
         }
+}
+
+Function Get-FuzzyBookmarksFromFiles
+{
+    param(
+        [Parameter(Mandatory=$true)]
+        [string[]]$Filenames,
+        [Parameter(Mandatory=$true)]
+        [string]$Alias,
+        [int]$First=5
+    )
+
+    # Quit early if the file doesn't exist
+    $validFiles = $Filenames | Where-Object { Test-Path $_ }
+    if ($validFiles.Count -eq 0)
+    {
+        return
+    }
+
+    $validFiles | Get-ChildItem | Get-Content |
+        Where-Object { $_ -like '*|*' } |
+        ForEach-Object {
+            $splitLine = $_.Split("|");
+            $ob = New-Object System.Object;
+            $ob | Add-Member -Type NoteProperty -Name Alias -Value $splitLine[0].Trim();
+            $ob | Add-Member -Type NoteProperty -Name Path -Value $ExecutionContext.InvokeCommand.ExpandString($splitLine[1].Trim())
+            return $ob
+        } | 
+        Get-BestFuzzyMatch -Member Alias -FuzzyName $Alias -First $First |
+        Select-Object Alias, Path
 }
